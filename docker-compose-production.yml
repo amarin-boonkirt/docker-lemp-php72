@@ -13,6 +13,7 @@ services:
       - php-fpm    
     depends_on:
       - php-fpm
+    restart: always
   php-fpm:
     image: 'amarinboonkirt/php72-fpm-stretch'  
     working_dir: /var/www/html
@@ -23,6 +24,7 @@ services:
       - mariadb      
     depends_on:
       - mariadb
+    restart: always
   mariadb:
     image: 'mariadb:10.4'    
     environment:
@@ -32,6 +34,9 @@ services:
       - MYSQL_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}    
     volumes:
       - './storage/mysql:/var/lib/mysql'
+    command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_general_ci']
+    restart: always
+    
   phpmyadmin:
     image: phpmyadmin/phpmyadmin    
     links:
