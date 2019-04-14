@@ -10,8 +10,8 @@ services:
       - './docker/nginx/conf.d:/etc/nginx/conf.d'
       - '${PROJECT_WEB_DIR}:/usr/share/nginx/html'
       - './storage/dhparam-2048.pem:/etc/ssl/certs/dhparam-2048.pem'      
-      - './storage/etc/letsencrypt/live/${HOST_NAME}/fullchain.pem:/etc/letsencrypt/live/${PUBLIC_HOST_NAME}/fullchain.pem'
-      - './storage/etc/letsencrypt/live/${HOST_NAME}/privkey.pem:/etc/letsencrypt/live/${PUBLIC_HOST_NAME}/privkey.pem'
+      - './storage/etc/letsencrypt/live/${PUBLIC_HOST_NAME}/fullchain.pem:/etc/letsencrypt/live/${PUBLIC_HOST_NAME}/fullchain.pem'
+      - './storage/etc/letsencrypt/live/${PUBLIC_HOST_NAME}/privkey.pem:/etc/letsencrypt/live/${PUBLIC_HOST_NAME}/privkey.pem'
     links:
       - php-fpm    
     depends_on:
