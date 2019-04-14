@@ -5,7 +5,7 @@ export $(egrep -v '^#' .env | xargs)
 sed -i "s/PUBLIC_HOST_NAME/$PUBLIC_HOST_NAME/g" $PWD/docker/nginx/conf.d.prepare/default.conf
 sed -i "s/PUBLIC_HOST_NAME/$PUBLIC_HOST_NAME/g" $PWD/docker/nginx/conf.d/default.conf
 
-docker-compose -f docker-compose-prepare.yml up
+docker-compose -f docker-compose-prepare.yml up -d
 
 sudo docker run -it --rm \
 -v $PWD/storage/etc/letsencrypt:/etc/letsencrypt \
