@@ -1,3 +1,5 @@
+https://www.humankode.com/ssl/how-to-set-up-free-ssl-certificates-from-lets-encrypt-using-docker-and-nginx
+
 # docker-lemp-php72
 nginx mariadb php72
 
@@ -8,14 +10,17 @@ web service port
 other credential
 ```
 
-## First Install
+## Build
 Main service (nginx, php-fpm, mariadb) and Tools (phpmyadmin, ftp) will start.
 
 ```
-docker-compose -f docker-compose-production.yml up -d
-docker-compose -f docker-compose-production.yml down
+sh build.sh
+
 ```
 
+```
+
+```
 ### FTP Access
 ```
 Host: <yourdomain>
@@ -32,7 +37,7 @@ Only main service (nginx, php-fpm, mariadb) will start.
 ```
 docker-compose -f docker-compose-production.yml down
  
-docker-compose -f docker-compose-production.yml up -d webserver
+docker-compose -f docker-compose-production.yml up -d nginx
 
 ```
 
@@ -41,4 +46,5 @@ Need to remove all docker* ?
 
 ```
 docker rm -f $(docker ps -a -q) && docker rmi $(docker images -q) && docker system prune
+
 ```
